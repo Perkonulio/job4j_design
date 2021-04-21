@@ -13,19 +13,15 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        while (point < data.length) {
-            if(data[point] % 2 != 0) {
-                point++;
-            } else {
-                return true;
-            }
+        while (point < data.length && data[point] % 2 == 1) {
+            point++;
         }
-        return false;
+        return point < data.length;
     }
 
     @Override
     public Integer next() {
-        if(!hasNext()) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
         return data[point++];
