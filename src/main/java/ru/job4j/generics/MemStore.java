@@ -8,29 +8,25 @@ public class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public void add(T model) {
-        if (!mem.contains(model)) {// под вопросом нужна ли здесь проверка
-            mem.add(model);
-        }
+        mem.add(model);
     }
 
     @Override
     public boolean replace(String id, T model) {
-        for (int index = 0; index < mem.size(); index++) {
-            if (mem.get(index).getId().equals(id)) {
-                mem.set(index, model);
-                return true;
-            }
+        int indicator = findIndexById(id);
+        if(mem.get(indicator).getId().equals(id)) {
+            mem.set(indicator, model);
+            return true;
         }
         return false;
     }
 
     @Override
     public boolean delete(String id) {
-        for (int index = 0; index < mem.size(); index++) {
-            if (mem.get(index).getId().equals(id)) {
-                mem.remove(index);
-                return true;
-            }
+        int indicator = findIndexById(id);
+        if(mem.get(indicator).getId().equals(id)) {
+            mem.remove(indicator);
+            return true;
         }
         return false;
     }
@@ -43,5 +39,14 @@ public class MemStore<T extends Base> implements Store<T> {
             }
         }
         return null;
+    }
+
+    public int findIndexById(String id) {
+        for (int index = 0; index < mem.size(); index++) {
+            if(mem.get(index).getId().equals(id)) {
+                return index;
+            }
+        }
+        return -1;
     }
 }
