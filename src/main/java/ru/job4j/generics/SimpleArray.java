@@ -24,14 +24,18 @@ public class SimpleArray<T> implements Iterable<T>{
     }
 
     public void remove(int index) {
-        Objects.checkIndex(index, this.index + 1);
+        Objects.checkIndex(index, this.index);
         System.arraycopy(data, index + 1, data, index, this.index - index);
         this.index--;
     }
 
     public T get (int index) {
-        Objects.checkIndex(index, this.index + 1);
+        Objects.checkIndex(index, this.index);
         return data[index];
+    }
+
+    public boolean isEmpty() {
+        return this.index == 0;
     }
 
     @Override
