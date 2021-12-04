@@ -1,6 +1,6 @@
 package ru.job4j.generics;
 
-public class Node <E>{
+public class Node<E> {
     E item;
     Node<E> next;
     Node<E> prev;

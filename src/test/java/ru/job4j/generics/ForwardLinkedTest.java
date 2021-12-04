@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ForwardLinkedTest{
+public class ForwardLinkedTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenDeleteFirst() {

@@ -1,6 +1,7 @@
 package ru.job4j.generics;
 
-import junit.framework.TestCase;import org.hamcrest.core.Is;
+import junit.framework.TestCase;
+import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import java.util.Iterator;

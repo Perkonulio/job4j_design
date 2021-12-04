@@ -4,14 +4,13 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class SimpleArray<T> implements Iterable<T>{
+public class SimpleArray<T> implements Iterable<T> {
     private final T[] data;
     private int index = 0;
 
     public SimpleArray(int length) {
         this.data = (T[]) new Object[length];
     }
-
 
     public void add(T model) {
         data[index] = model;
@@ -29,7 +28,7 @@ public class SimpleArray<T> implements Iterable<T>{
         this.index--;
     }
 
-    public T get (int index) {
+    public T get(int index) {
         Objects.checkIndex(index, this.index);
         return data[index];
     }
@@ -51,7 +50,7 @@ public class SimpleArray<T> implements Iterable<T>{
 
             @Override
             public T next() {
-                if(!hasNext()) {
+                if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 return data[indexIter++];

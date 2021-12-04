@@ -52,7 +52,8 @@ public class SimpleArrayList<T> implements ListForArray<T> {
     @Override
     public T set(int index, T element) {
         Objects.checkIndex(index, this.index);
-        return array[index] = element;
+        array[index] = element;
+        return array[index];
     }
 
     @Override
