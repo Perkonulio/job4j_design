@@ -38,7 +38,6 @@ public class SimpleLinkedList<T> implements List<T> {
     public void add(T object) {
         linkLast(object);
         index++;
-        modCount++;
     }
 
     @Override
@@ -50,7 +49,6 @@ public class SimpleLinkedList<T> implements List<T> {
     @Override
     public Iterator<T> iterator() {
         Iterator<T> iter = new Iterator<>() {
-
             private int indexIter = 0;
             private int counter = modCount;
 
