@@ -22,10 +22,11 @@ public class SimpleArrayList<T> implements ListForArray<T> {
     @Override
     public T remove(int index) {
         Objects.checkIndex(index, this.index);
-        T obj = array[index];
+        T value = array[index];
         System.arraycopy(array, index + 1, array, index, array.length - index - 1);
         array[array.length - 1] = null;
-        return obj;
+        this.index--;
+        return value;
     }
 
     @Override
@@ -52,8 +53,9 @@ public class SimpleArrayList<T> implements ListForArray<T> {
     @Override
     public T set(int index, T element) {
         Objects.checkIndex(index, this.index);
+        T value = array[index];
         array[index] = element;
-        return array[index];
+        return value;
     }
 
     @Override
