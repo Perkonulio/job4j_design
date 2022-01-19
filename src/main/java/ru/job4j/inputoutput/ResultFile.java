@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class ResultFile {
     public static void main(String[] args) {
-        try(FileOutputStream file = new FileOutputStream("result.txt")) {
+        try (FileOutputStream file = new FileOutputStream("result.txt")) {
             Matrix matrix = new Matrix();
             file.write(Arrays.deepToString(matrix.multiple(10)).getBytes());
         } catch (Exception e) {

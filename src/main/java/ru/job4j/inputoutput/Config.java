@@ -22,7 +22,9 @@ public class Config {
                     String[] splitText = txt.split("=");
                     if (splitText[0].equals("") || splitText[1].equals("")) {
                         throw new IllegalArgumentException();
-                    } else values.put(splitText[0], splitText[1]);
+                    } else {
+                        values.put(splitText[0], splitText[1]);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -43,7 +45,9 @@ public class Config {
 
     public String value(String key) {
         String text = null;
-        if (values.containsKey(key)) text = values.get(key);
+        if (values.containsKey(key)) {
+            text = values.get(key);
+        }
         return text;
     }
 }

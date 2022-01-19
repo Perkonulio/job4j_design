@@ -11,7 +11,9 @@ public class LogFile {
         try (BufferedReader buff = new BufferedReader(new FileReader(list))) {
             String text;
             for (text = buff.readLine(); text != null; text = buff.readLine()) {
-                if (text.contains("404")) result.add(text);
+                if (text.contains("404")) {
+                    result.add(text);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

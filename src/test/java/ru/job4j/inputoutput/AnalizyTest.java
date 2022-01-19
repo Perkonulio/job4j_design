@@ -18,12 +18,12 @@ public class AnalizyTest {
         File input = folder.newFile("input.log");
         File output = folder.newFile("output.txt");
         try (PrintWriter print = new PrintWriter(input)) {
-            print.println("200 10:56:01\n" +
-                    "200 10:57:01\n" +
-                    "400 10:58:01\n" +
-                    "200 10:59:01\n" +
-                    "500 11:01:02\n" +
-                    "200 11:02:02");
+            print.println("200 10:56:01\n"
+                    + "200 10:57:01\n"
+                    + "400 10:58:01\n"
+                    + "200 10:59:01\n"
+                    + "500 11:01:02\n"
+                    + "200 11:02:02");
         }
         Analizy analizy = new Analizy();
         analizy.unavailable(input.toString(), output.toString());
@@ -32,8 +32,8 @@ public class AnalizyTest {
             string.append(buff.readLine()).append("\n");
             string.append(buff.readLine());
         }
-        assertThat(string.toString(), is("10:58:01;10:59:01;\n" +
-                "11:01:02;11:02:02;"));
+        assertThat(string.toString(), is("10:58:01;10:59:01;\n"
+                + "11:01:02;11:02:02;"));
     }
 
     @Test
@@ -41,12 +41,12 @@ public class AnalizyTest {
         File input = folder.newFile("input.log");
         File output = folder.newFile("output.txt");
         try (PrintWriter print = new PrintWriter(input)) {
-            print.println("200 10:56:01\n" +
-                    "200 10:57:01\n" +
-                    "\n" +
-                    "200 10:59:01\n" +
-                    "500 11:01:02\n" +
-                    "200 11:02:02");
+            print.println("200 10:56:01\n"
+                    + "200 10:57:01\n"
+                    + "\n"
+                    + "200 10:59:01\n"
+                    + "500 11:01:02\n"
+                    + "200 11:02:02");
         }
         Analizy analizy = new Analizy();
         analizy.unavailable(input.toString(), output.toString());
