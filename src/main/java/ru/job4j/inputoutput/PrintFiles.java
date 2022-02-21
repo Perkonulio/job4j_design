@@ -11,7 +11,6 @@ import java.util.function.Predicate;
 
 public class PrintFiles extends SimpleFileVisitor<Path> {
     Predicate<Path> pred;
-    boolean flag = false;
     List<Path> list = new ArrayList<>();
 
     public PrintFiles(Predicate<Path> pred) {
@@ -21,7 +20,7 @@ public class PrintFiles extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         if (pred.test(file)) {
-            list.add(file.getFileName());
+            list.add(file);
         }
         return FileVisitResult.CONTINUE;
     }

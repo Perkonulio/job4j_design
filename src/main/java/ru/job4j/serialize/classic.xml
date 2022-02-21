@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmlClassic legend="true" size="25" name="Petr">
+    <contact zipcode="23" phone="555"/>
+    <statuses>
+        <status>Support</status>
+        <status>Influenced</status>
+    </statuses>
+</xmlClassic>

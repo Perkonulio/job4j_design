@@ -9,9 +9,10 @@ import java.util.function.Predicate;
 
 public class Search implements Predicate<Path> {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get("./src");
+        Path start = Paths.get("./src/");
         Predicate<Path> pred = new Search();
-        search(start, pred);
+        System.out.println(search(start, pred));
+
     }
 
     public static List<Path> search(Path root, Predicate<Path> cond) throws IOException {
@@ -22,6 +23,6 @@ public class Search implements Predicate<Path> {
 
     @Override
     public boolean test(Path path) {
-        return path.getFileName().endsWith(".js");
+        return path.toFile().getName().endsWith(".js");
     }
 }
