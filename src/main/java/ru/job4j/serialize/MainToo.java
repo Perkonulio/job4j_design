@@ -33,13 +33,13 @@ public class MainToo {
         Marshaller marsh = jaxbContext.createMarshaller();
         marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         String xml = "";
-        try(StringWriter writer = new StringWriter()) {
+        try (StringWriter writer = new StringWriter()) {
             marsh.marshal(secuirity, writer);
             xml = writer.getBuffer().toString();
             System.out.println(xml);
         }
         Unmarshaller unmarsh = jaxbContext.createUnmarshaller();
-        try(StringReader read = new StringReader(xml)) {
+        try (StringReader read = new StringReader(xml)) {
             Secuirity secuirity1 = (Secuirity) unmarsh.unmarshal(read);
             System.out.println(secuirity1);
         }

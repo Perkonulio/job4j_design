@@ -1,27 +1,21 @@
 package ru.job4j.jdbc;
 
-import org.h2.engine.Setting;
-import ru.job4j.inputoutput.Config;
-import ru.job4j.inputoutput.Settings;
-import ru.job4j.set.Set;
-
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-        Class.forName("org.postgresql.Driver");
-        Settings settings = new Settings();
-        ClassLoader loader = Settings.class.getClassLoader();
-        try (InputStream io = loader.getResourceAsStream("./app.properties")) {
-            settings.load(io);
-            try(Connection connection = DriverManager.getConnection(settings.getValue("url"),
-                    settings.getValue("login"), settings.getValue("password"))) {
+        Properties config = new Properties();
+        try (InputStream io = ConnectionDemo.class.getClassLoader().getResourceAsStream("app.properties")) {
+            config.load(io);
+            Class.forName(config.getProperty("driver"));
+            try (Connection connection = DriverManager.getConnection(config.getProperty("url"),
+                    config.getProperty("login"), config.getProperty("password"))) {
                 DatabaseMetaData metaData = connection.getMetaData();
                 System.out.println(metaData.getUserName());
                 System.out.println(metaData.getURL());
@@ -29,5 +23,13 @@ public class ConnectionDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static Connection getConnection() throws Exception {
+        Class.forName("org.postgresql.Driver");
+        String url = "jdbc:postgresql://localhost:5432/idea_db";
+        String login = "postgres";
+        String password = "password";
+        return DriverManager.getConnection(url, login, password);
     }
 }
