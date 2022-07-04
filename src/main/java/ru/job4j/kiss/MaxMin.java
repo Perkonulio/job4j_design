@@ -7,16 +7,11 @@ import java.util.function.BiPredicate;
 public class MaxMin {
 
     public <T> T maxMin(List<T> list, Comparator<T> comparator) {
-        MaxMin maxMin = new MaxMin();
-        BiPredicate<T, T> pred = (o1, o2) -> {
-            return comparator.compare(o1, o2) > 0;
-        };
-        return maxMin.logic(list, pred);
-
+        return logic(list, (x, y) -> comparator.compare(x, y) > 0);
     }
 
     public <T> T logic(List<T> list, BiPredicate<T, T> predicate) {
-        T maximum = null;
+        T maximum = list.get(0);
         for (T t : list) {
             if (predicate.test(t, maximum)) {
                 maximum = t;
